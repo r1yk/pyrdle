@@ -4,6 +4,7 @@ You can even play more than once a day if you want!
 """
 
 import random
+import re
 from words import words
 
 random.seed()
@@ -55,9 +56,11 @@ class Wordle:
 
     def get_guess(self) -> str:
         """Return a five-letter guess from the user."""
-        guess = input('Enter guess: ')
+        guess = input('Enter guess: ').lower()
+        # Remove any non-letter characters
+        guess = re.sub('[^a-z]', '', guess)
         if len(guess) == 5:
-            return guess.lower()
+            return guess
 
         print('Error! Guess must be 5 letters')
         return self.get_guess()
