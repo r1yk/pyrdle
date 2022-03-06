@@ -76,6 +76,7 @@ class Wordle:
             letter = guess[i]
             if letter == self.word[i]:
                 result.append(Wordle.correct)
+                word_letters.remove(letter)
 
             elif letter in word_letters:
                 result.append(Wordle.partial)
